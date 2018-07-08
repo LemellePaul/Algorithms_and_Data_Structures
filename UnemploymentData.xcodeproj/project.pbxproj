@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CC3772AF20F2A50200F03887 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3772AE20F2A50200F03887 /* main.swift */; };
+		CC3772B620F2A54200F03887 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3772B520F2A54200F03887 /* main.swift */; };
+		CC3772B820F2A56D00F03887 /* GetJSONObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3772B720F2A56D00F03887 /* GetJSONObject.swift */; };
+		CC3772BA20F2A57900F03887 /* BuildData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3772B920F2A57900F03887 /* BuildData.swift */; };
+		CC3772BC20F2A58800F03887 /* getJSONUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3772BB20F2A58800F03887 /* getJSONUrl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +27,10 @@
 
 /* Begin PBXFileReference section */
 		CC3772AB20F2A50200F03887 /* UnemploymentData */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = UnemploymentData; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC3772AE20F2A50200F03887 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		CC3772B520F2A54200F03887 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		CC3772B720F2A56D00F03887 /* GetJSONObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetJSONObject.swift; sourceTree = "<group>"; };
+		CC3772B920F2A57900F03887 /* BuildData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildData.swift; sourceTree = "<group>"; };
+		CC3772BB20F2A58800F03887 /* getJSONUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getJSONUrl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +63,20 @@
 		CC3772AD20F2A50200F03887 /* UnemploymentData */ = {
 			isa = PBXGroup;
 			children = (
-				CC3772AE20F2A50200F03887 /* main.swift */,
+				CC3772B520F2A54200F03887 /* main.swift */,
+				CC3772BD20F2A5A000F03887 /* Model */,
 			);
 			path = UnemploymentData;
+			sourceTree = "<group>";
+		};
+		CC3772BD20F2A5A000F03887 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC3772B720F2A56D00F03887 /* GetJSONObject.swift */,
+				CC3772BB20F2A58800F03887 /* getJSONUrl.swift */,
+				CC3772B920F2A57900F03887 /* BuildData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -94,6 +111,7 @@
 				TargetAttributes = {
 					CC3772AA20F2A50200F03887 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -119,7 +137,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC3772AF20F2A50200F03887 /* main.swift in Sources */,
+				CC3772BC20F2A58800F03887 /* getJSONUrl.swift in Sources */,
+				CC3772BA20F2A57900F03887 /* BuildData.swift in Sources */,
+				CC3772B620F2A54200F03887 /* main.swift in Sources */,
+				CC3772B820F2A56D00F03887 /* GetJSONObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,9 +263,16 @@
 		CC3772B320F2A50200F03887 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PJPNYLL45B;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -252,8 +280,14 @@
 		CC3772B420F2A50200F03887 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PJPNYLL45B;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 			};
