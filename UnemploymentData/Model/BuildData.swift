@@ -58,6 +58,7 @@ struct BuildData {
         
         
         if let stateArray = jsonObject[state] as? [String : AnyObject] {
+            
             if let toArray = stateArray["Unemployment Rate"] {
                 for countyName in stateArray.values {
                     countyArray.append("\(countyName.allKeys)")
@@ -69,7 +70,7 @@ struct BuildData {
                 let startOfString = newString.index(chartIndex!, offsetBy: 1)
 
                 let endOfString = newString.index(newString.endIndex, offsetBy: -3)
-                let subStringOne = newString[startOfString...endOfString]
+                let subStringOne = newString[startOfString..<endOfString]
 
                 let newArray = Array(subStringOne.split(separator: ","))
 
