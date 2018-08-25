@@ -29,9 +29,7 @@ struct BuildData {
     fileprivate mutating func allCountiesForStates() {
         for key in jsonObject.keys {
             allState(for: key)
-            
         }
-        
     }
 
     fileprivate mutating func allState(for year: String) {
@@ -57,10 +55,15 @@ struct BuildData {
         var allCountyArray = [String]()
         
         
-        if let stateArray = jsonObject[state] as? [String : AnyObject] {
+        if var stateArray = jsonObject[state] as? [String : AnyObject] {
+
+            let keyString = "Unemployment Rate"
+            let newDict = stateArray.filter { $0.key.contains(keyString) }
+            let key = stateArray[keyString]
             
-            if let toArray = stateArray["Unemployment Rate"] {
-                for countyName in stateArray.values {
+            
+            if let toArray = key  {
+                for countyName in newDict.values {
                     countyArray.append("\(countyName.allKeys)")
                 
                 }
@@ -83,13 +86,15 @@ struct BuildData {
                         if index > 0 {
                             let charIndex = value.index(value.startIndex, offsetBy: 1)
                             let noSpaceString = value[charIndex..<value.endIndex]
+                
                             if let returnedString = toArray[noSpaceString] {
-                                
+
                                 let result = ("\(year) : \(state) : \(noSpaceString) = " + "\(String(describing: returnedString ?? "NoData"))")
                                 unemploymentRateForAllStates.append(result)
                             }
 
                         } else {
+            
                             if let returnedString = toArray[value] {
                                 let result = ("\(year) : \(state) : \(value) = " + "\(String(describing: returnedString ?? "NoData"))")
                                 unemploymentRateForAllStates.append(result)
