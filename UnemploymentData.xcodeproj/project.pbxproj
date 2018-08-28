@@ -66,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				CC3772B520F2A54200F03887 /* main.swift */,
-				CC231D512132197D00BAA666 /* PerformanceMeasure.swift */,
 				CC3772BD20F2A5A000F03887 /* Model */,
 			);
 			path = UnemploymentData;
@@ -76,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				CC3772B720F2A56D00F03887 /* GetJSONObject.swift */,
+				CC231D512132197D00BAA666 /* PerformanceMeasure.swift */,
 				CC3772BB20F2A58800F03887 /* getJSONUrl.swift */,
 				CC3772B920F2A57900F03887 /* BuildData.swift */,
 			);

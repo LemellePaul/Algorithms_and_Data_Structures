@@ -10,9 +10,13 @@ import Foundation
 
 struct BuildData {
     
-    fileprivate var jsonObject = [String : AnyObject]()  // JSON OBject file
+    // JSON OBject file
+    fileprivate var jsonObject = [String : AnyObject]()
     
+    // Array to store counties per state.
     fileprivate var countyArray = [String]()
+    
+    // Array to store all states & counties for the number of years.
     fileprivate var unemploymentRateForAllStates = [String]()
     
     /**
@@ -22,16 +26,21 @@ struct BuildData {
         
         jsonObject = GetJSONObject.parseObject(url: urlLink)
         allCountiesForStates()
-        
     }
     
-
+    /**
+     The purpose of this method is to create an array of all of the States that will be used as dictionary keys.
+     */
     fileprivate mutating func allCountiesForStates() {
         for key in jsonObject.keys {
             allState(for: key)
         }
     }
-
+    
+    /**
+     The purpose of this method is to construct the 'jsonObject' & 'allCounties'data structures with State & County data from the JSON file. And to to load data into the 'getCountyNamesFor' method.
+     - parameter year: Takes a String value that is used as the key year for the JSON file.
+     */
     fileprivate mutating func allState(for year: String) {
         
         
@@ -49,7 +58,12 @@ struct BuildData {
         }
     }
     
-    //MARK: - getCountyNAmesForState a
+    //MARK: - Clean the Data from the JSON File.
+    /**
+     The purpose of this method is to clean the data generated from the json file to be processed into an useable data structure.
+     - parameter year: Takes a String value that is used as the key for a given year.
+     - parameter state: Takes a String value that is used to read the counties for a given state.
+     */
     fileprivate mutating func getCountyNamesFor(state: String, year: String)  {
         
         var allCountyArray = [String]()
@@ -58,12 +72,14 @@ struct BuildData {
         if var stateArray = jsonObject[state] as? [String : AnyObject] {
 
             let keyString = "Unemployment Rate"
-            let newDict = stateArray.filter { $0.key.contains(keyString) }
+            
+            // Work around for an issue when procesisng the JSON that will fail depending on the order of the key returned. So, added a filter to return only dictionary with the correct key.
+            let tempDict = stateArray.filter { $0.key.contains(keyString) }
             let key = stateArray[keyString]
             
             
             if let toArray = key  {
-                for countyName in newDict.values {
+                for countyName in tempDict.values {
                     countyArray.append("\(countyName.allKeys)")
                 
                 }
@@ -83,6 +99,7 @@ struct BuildData {
 
                     for (index, value) in allCountyArray.enumerated() {
 
+                        // Condition check to handle a space character that only 
                         if index > 0 {
                             let charIndex = value.index(value.startIndex, offsetBy: 1)
                             let noSpaceString = value[charIndex..<value.endIndex]
