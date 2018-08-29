@@ -13,11 +13,13 @@ enum ErrorToThorw: Error {
     case ReadingFile
 }
 
-/**
- The purpose of this method is to read the contents of the JSON File and return [String : AnyObject] object. 
- */
+
 struct GetJSONObject {
     
+    /**
+     The purpose of this method is to read the contents of the JSON File and return [String : AnyObject] object.
+     - parameter url: An URL object 
+     */
     static public func parseObject(url: URL) -> [String : AnyObject] {
         
         var jsonData = [String : AnyObject]()

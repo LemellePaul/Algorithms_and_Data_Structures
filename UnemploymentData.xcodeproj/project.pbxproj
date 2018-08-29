@@ -12,6 +12,7 @@
 		CC3772B820F2A56D00F03887 /* GetJSONObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3772B720F2A56D00F03887 /* GetJSONObject.swift */; };
 		CC3772BA20F2A57900F03887 /* BuildData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3772B920F2A57900F03887 /* BuildData.swift */; };
 		CC3772BC20F2A58800F03887 /* getJSONUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3772BB20F2A58800F03887 /* getJSONUrl.swift */; };
+		CCA58ECD2135972C004AA696 /* Algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA58ECC2135972C004AA696 /* Algorithms.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +34,7 @@
 		CC3772B720F2A56D00F03887 /* GetJSONObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetJSONObject.swift; sourceTree = "<group>"; };
 		CC3772B920F2A57900F03887 /* BuildData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildData.swift; sourceTree = "<group>"; };
 		CC3772BB20F2A58800F03887 /* getJSONUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getJSONUrl.swift; sourceTree = "<group>"; };
+		CCA58ECC2135972C004AA696 /* Algorithms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithms.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				CC3772B520F2A54200F03887 /* main.swift */,
+				CCA58ECB213596D6004AA696 /* Algorithms */,
 				CC3772BD20F2A5A000F03887 /* Model */,
 			);
 			path = UnemploymentData;
@@ -80,6 +83,14 @@
 				CC3772B920F2A57900F03887 /* BuildData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CCA58ECB213596D6004AA696 /* Algorithms */ = {
+			isa = PBXGroup;
+			children = (
+				CCA58ECC2135972C004AA696 /* Algorithms.swift */,
+			);
+			path = Algorithms;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +156,7 @@
 				CC3772B620F2A54200F03887 /* main.swift in Sources */,
 				CC231D522132197D00BAA666 /* PerformanceMeasure.swift in Sources */,
 				CC3772B820F2A56D00F03887 /* GetJSONObject.swift in Sources */,
+				CCA58ECD2135972C004AA696 /* Algorithms.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

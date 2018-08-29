@@ -42,21 +42,18 @@ if (!unemploymentDataArray.isEmpty) {
     
     // Performs a linear search of the unemployment data, which can vary depending on the size of the data set.
     print("Searching.....")
+    let item = randomElement ?? ""
     benchmark.printTimeElapsedWhenRunningCode(title: "Linear Search")  {
-        for n in newArray {
-            if n == randomElement ?? ""{
-                print("Found item: \(n)")
-                break
-            }
-        }
+        let _ =  Algorithms.linearSearch(newArray, item)
+
     }
-    let sortedUnemploymentDataArray = newArray.sorted()
     
+    let sortedUnemploymentDataArray = Algorithms.quicksort(newArray)
     print("Binary Search...")
     // Is more effiecient than simply using a linear search to find an element by using the concept of 'Divide & Conquer.'
     let binarySearchRandomElement = randomElement ?? " "
     benchmark.printTimeElapsedWhenRunningCode(title: "Binary Search")  {
-        let _ = benchmark.binarySearch(sortedUnemploymentDataArray, key: binarySearchRandomElement, range: 0..<sortedUnemploymentDataArray.count)
+        let _ = Algorithms.binarySearch(sortedUnemploymentDataArray, key: binarySearchRandomElement, range: 0..<sortedUnemploymentDataArray.count)
     }
 } else {
     print("Please run again ")
