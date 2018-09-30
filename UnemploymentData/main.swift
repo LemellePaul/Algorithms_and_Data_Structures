@@ -9,52 +9,34 @@
 import Foundation
 
 let url = getJSONUrl.projectDirectory()
-let benchmark = PerformanceMeasure()
 
 var buildData = BuildData()
 buildData.readObjectData(urlLink: url)
-let unemploymentDataArray = buildData.create()
+var unemploymentDataArray = buildData.create()
+let unemploymentDataSet = buildData.createSet()
 
 // Empty array that will be used to append / insert data.
-var newArray = [String]()
-if (!unemploymentDataArray.isEmpty) {
+if (!unemploymentDataArray.isEmpty && !unemploymentDataSet.isEmpty) {
+    print("The array data structure stored elements: \(unemploymentDataArray.count)")
+    print("The set data structure stored elements: \(unemploymentDataSet.count)")
     
-    // Search random element in the array.
-    // Add elements to new array by using the append methiod, which is faster than inserting elements in the middle of an Array.
-    benchmark.printTimeElapsedWhenRunningCode(title: "Appending an Array") {
-        for item in unemploymentDataArray {
-            newArray.append(item)
-        }
-    }
-    
-    print("The sixe of the element: \(newArray.count)")
-    // Adding elements in the middle of an array is less efficent because area os memories must be changed / moved arround.
-    benchmark.printTimeElapsedWhenRunningCode(title: "Inserting elements in an Array") {
-        let value = newArray.count
-        for item in newArray {
-            newArray.insert(item, at: value - 1)
-        }
-    }
-    
-    // Search through a larger element sof the array
-    let randomElement = newArray.randomElement()
-    print("The sixe of the newArray element: \(newArray.count)")
-    
-    // Performs a linear search of the unemployment data, which can vary depending on the size of the data set.
-    print("Searching.....")
-    let item = randomElement ?? ""
-    benchmark.printTimeElapsedWhenRunningCode(title: "Linear Search")  {
-        let _ =  Algorithms.linearSearch(newArray, item)
+    // Verify that the elements are truly unique, or just a false positive problem.
+    let uniqueDescString = """
+    Verify that elements in the array & set data structures are truly unique.
+    The Swift symmetricDifference method will compare the two data structures, and return only unique elements.
 
+    Append a made up value that is not in the append then use the 'symmetricDifference' only returns the appended value.
+    """
+    print(uniqueDescString)
+    let madeUpValue = "2013 : Utah : Sevier County = 7.8"
+    unemploymentDataArray.append(madeUpValue)
+    let valuesNotInBoth = unemploymentDataSet.symmetricDifference(unemploymentDataArray)
+    if valuesNotInBoth.contains(madeUpValue) {
+        print("The symmetricDifference method returned the correct value: \(valuesNotInBoth)")
+    } else {
+        print("Error: The 'symmetricDifference' method did not return the expected value")
     }
     
-    let sortedUnemploymentDataArray = Algorithms.quicksort(newArray)
-    print("Binary Search...")
-    // Is more effiecient than simply using a linear search to find an element by using the concept of 'Divide & Conquer.'
-    let binarySearchRandomElement = randomElement ?? " "
-    benchmark.printTimeElapsedWhenRunningCode(title: "Binary Search")  {
-        let _ = Algorithms.binarySearch(sortedUnemploymentDataArray, key: binarySearchRandomElement, range: 0..<sortedUnemploymentDataArray.count)
-    }
 } else {
     print("Please run again ")
 }

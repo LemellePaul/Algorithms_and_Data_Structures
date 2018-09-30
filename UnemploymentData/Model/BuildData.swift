@@ -146,4 +146,23 @@ struct BuildData {
         return arrayOutput
     }
     
+    /**
+     The purpose of this method is to return a set data structure of only non-duplicte values from the processed JSON
+     */
+    func createSet() -> Set<String> {
+        
+        let items = unemploymentRateForAllStates
+        var arrayOutput =  Set<String>()
+        
+        let newArray = items.filter { !$0.contains("NoData") }
+        
+        
+        for n in newArray {
+            arrayOutput.insert(n)
+        }
+        
+        return arrayOutput
+    }
+
+    
 }
